@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_re_contract_type_list" model="ir.ui.view">
+        <field name="name">re.contract.type.list</field>
+        <field name="model">re.contract.type</field>
+        <field name="arch" type="xml">
+            <list string="أنواع العقود">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="base_type"/>
+                <field name="contract_count"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_re_contract_type_form" model="ir.ui.view">
+        <field name="name">re.contract.type.form</field>
+        <field name="model">re.contract.type</field>
+        <field name="arch" type="xml">
+            <form string="نوع العقد">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_contracts" type="object"
+                                class="oe_stat_button" icon="fa-file-text-o">
+                            <field name="contract_count" widget="statinfo" string="العقود"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="مثال: سكني — النموذج القياسي"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code" placeholder="مثال: RES-STD"/>
+                            <field name="base_type"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="company_id"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="الشروط والأحكام">
+                            <field name="terms" nolabel="1"
+                                   placeholder="اكتب الشروط والأحكام التي ستظهر في العقد..."/>
+                        </page>
+                        <page string="ملاحظات">
+                            <field name="note" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_re_contract_type" model="ir.actions.act_window">
+        <field name="name">أنواع العقود والشروط</field>
+        <field name="res_model">re.contract.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Real Estate > Configuration > أنواع العقود والشروط -->
+    <menuitem id="menu_re_contract_type"
+              name="أنواع العقود والشروط"
+              parent="real_estate_management.menu_re_config"
+              action="action_re_contract_type"
+              sequence="10"/>
+</odoo>

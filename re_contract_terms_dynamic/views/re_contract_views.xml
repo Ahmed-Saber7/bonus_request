@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_re_contract_form_terms_dynamic" model="ir.ui.view">
+        <field name="name">re.contract.form.terms.dynamic</field>
+        <field name="model">re.contract</field>
+        <field name="inherit_id" ref="real_estate_management.view_re_contract_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='contract_type']" position="after">
+                <field name="contract_type_id"
+                       options="{'no_create': False}"
+                       placeholder="اختر نوع العقد لتنزيل الشروط..."/>
+            </xpath>
+            <xpath expr="//field[@name='terms']" position="before">
+                <div class="o_row mb-2">
+                    <button name="action_refresh_terms_from_type" type="object"
+                            string="تحديث الشروط من نوع العقد"
+                            class="btn btn-secondary"
+                            invisible="not contract_type_id"
+                            confirm="سيتم استبدال الشروط الحالية بشروط نوع العقد. متابعة؟"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_re_contract_list_terms_dynamic" model="ir.ui.view">
+        <field name="name">re.contract.list.terms.dynamic</field>
+        <field name="model">re.contract</field>
+        <field name="inherit_id" ref="real_estate_management.view_re_contract_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tenant_id']" position="after">
+                <field name="contract_type_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

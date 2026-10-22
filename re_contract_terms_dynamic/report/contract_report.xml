@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_contract_dynamic" model="report.paperformat">
+        <field name="name">عقد إيجار — A4</field>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">8</field>
+        <field name="margin_bottom">8</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_contract_dynamic" model="ir.actions.report">
+        <field name="name">عقد إيجار (ديناميكي)</field>
+        <field name="model">re.contract</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">re_contract_terms_dynamic.report_contract_dynamic</field>
+        <field name="report_file">re_contract_terms_dynamic.report_contract_dynamic</field>
+        <field name="print_report_name">'عقد-%s' % (object.name)</field>
+        <field name="binding_model_id" ref="real_estate_management.model_re_contract"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_contract_dynamic"/>
+    </record>
+</odoo>

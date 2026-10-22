@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_re_contract_type_user,re.contract.type user,model_re_contract_type,base.group_user,1,0,0,0
+access_re_contract_type_manager,re.contract.type manager,model_re_contract_type,real_estate_management.group_re_manager,1,1,1,1
+access_re_contract_type_property_manager,re.contract.type property manager,model_re_contract_type,real_estate_management.group_re_property_manager,1,1,1,0
+access_re_contract_type_accountant,re.contract.type accountant,model_re_contract_type,real_estate_management.group_re_accountant,1,1,1,0
